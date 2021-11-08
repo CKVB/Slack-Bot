@@ -1,4 +1,4 @@
 def index():
     return {
-        "message": "healthy & running 123"
+        "message": "healthy & running"
     }, 200
