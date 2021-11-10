@@ -14,6 +14,9 @@ def prime():
     resp = request.form
     number = int(resp.get("text"))
     is_prime = True
+
+    if number < 2:
+        return f"{number} is Not Prime"
     
     for i in range(2, number//2):
         if not number % i:
