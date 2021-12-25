@@ -1,5 +1,6 @@
 from flask import Blueprint, request
 from ..services import get_service
+import wikipedia
 
 slack_blueprint = Blueprint("slack_blueprint", __name__)
 
@@ -24,3 +25,10 @@ def prime():
             break
 
     return f"{number} is " + ["Prime" if is_prime else "Not Prime"][0]
+
+
+@slack_blueprint.post("/wiki")
+def wiki():
+    resp = request.form
+    text = resp.get("text")
+    return wikipedia.summary(f"'{text}'", sentences=1)
